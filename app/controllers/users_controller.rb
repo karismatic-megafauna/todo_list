@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       :email => user_params[:email] 
     })
     if @user.save
-      redirect_to articles_path, :notice => 'User successfully added.'
+      redirect_to root_path, :notice => 'User successfully added.'
     else
       render :action => 'new'
     end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     #@user = User.find(params[:id])
     @user = current_user
     if @user.update_attributes(params[:user])
-      redirect_to articles_path, :notice => 'Updated user information successfully.'
+      redirect_to root_path, :notice => 'Updated user information successfully.'
     else
       render :action => 'edit'
     end
