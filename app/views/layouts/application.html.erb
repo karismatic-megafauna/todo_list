@@ -20,7 +20,6 @@
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-  <%= # stylesheet_link_tag "application" %>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag 'jquery-1.10.2.min', 'rails', 'application' %>
@@ -37,18 +36,17 @@
   <!-- Initializes the modernizr and actually perform the checks. Enable this
        if you need the modernizr, but remember to only do the actual checks
        that you need. -->
-  <#%= javascript_tag "Modernizr.load();" %>
+  <%= javascript_tag "Modernizr.load();" %>
 </head>
 <body>
 
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+<!--   Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
 
   <!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
-  <%= javascript_include_tag 'application' %>
-
+  
   <div id="header">
     <h1><%= link_to "TodoList", root_path %></h1>
     <div id="user_bar">
