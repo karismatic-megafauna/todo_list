@@ -1,6 +1,12 @@
 TodoList::Application.routes.draw do
 
 
+  resources :tasks
+
+
+  resources :lists
+
+
   get "welcome/index"
 
   root :to => 'welcome#index'
