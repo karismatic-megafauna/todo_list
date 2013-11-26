@@ -1,9 +1,21 @@
 TodoList::Application.routes.draw do
 
 
+  resources :tasks
+
+
+  resources :lists
+
+
   get "welcome/index"
 
   root :to => 'welcome#index'
+
+
+  resources :users
+  resource :session
+  match '/login' => "sessions#new", :as => "login"
+  match '/logout' => "sessions#destroy", :as => "logout"
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
