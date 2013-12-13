@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  # before_filter :load_list, :except => :destroy
+
   # GET /tasks
   # GET /tasks.json
   def index
@@ -72,12 +74,20 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task = Task.find(params[:id])
+    @list = current_user.lists.find(params[:list_id])
+    @task = @list.tasks.find(params[:id])
+    #@task = Task.find(params[:id])
     @task.destroy
 
     respond_to do |format|
+      #format.html { redirect_to @list, :notice => 'Task deleted' }
       format.html { redirect_to tasks_url }
       format.json { head :no_content }
     end
   end
+  
+  private
+    def load_list
+      @list = List.find(params[:list_id])
+    end
 end
