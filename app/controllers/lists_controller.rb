@@ -79,7 +79,7 @@ class ListsController < ApplicationController
   # DELETE /lists/1.json
   def destroy
     #@list = List.find(params[:id])
-    @list =  current_user.lists.find(params[:id])
+    @list = current_user.lists.find(params[:id])
     @list.destroy
 
     respond_to do |format|

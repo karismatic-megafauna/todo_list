@@ -15,6 +15,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @list = List.find(params[:list_id])
     @task = Task.find(params[:id])
 
     respond_to do |format|
@@ -26,6 +27,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.json
   def new
+    @list = List.find(params[:list_id])
     @task = Task.new
 
     respond_to do |format|
@@ -36,13 +38,15 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @list = List.find(params[:list_id])
     @task = Task.find(params[:id])
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(params[:task])
+    @list = List.find(params[:list_id])
+    @task = @list.tasks.new(params[:task])
 
     respond_to do |format|
       if @task.save
@@ -62,7 +66,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to list_task_path(@task.list, @task), notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

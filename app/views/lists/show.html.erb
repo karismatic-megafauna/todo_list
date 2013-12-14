@@ -15,5 +15,12 @@
   <%= @list.description %>
 </p>
 
+<%= @list.tasks.each do |task| %>
+  <div>task: <%= link_to task.name, edit_list_task_path(@list, task) %></div>
+  <div></div>
+<% end %>
+
+<%= link_to 'New Task', new_list_task_path(@list) %>
+
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>
