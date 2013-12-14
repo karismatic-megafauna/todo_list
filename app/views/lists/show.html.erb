@@ -16,7 +16,7 @@
 </p>
 
 <%= @list.tasks.each do |task| %>
-  <div>task: <%= link_to task.name, edit_list_task_path(@list, task) %></div>
+  <div>task: <%= link_to task.name, edit_list_task_path(@list, task) %> </div>
   <div></div>
 <% end %>
 
