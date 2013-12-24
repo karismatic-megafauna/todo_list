@@ -1,7 +1,7 @@
 TodoList::Application.routes.draw do
-  get "welcome/index"
+  get "users/new"
 
-  root :to => 'welcome#index'
+  root :to => 'users#new'
 
   resources :lists do
     resources :tasks
@@ -9,6 +9,7 @@ TodoList::Application.routes.draw do
     
   resources :users
   resource :session
+
   match '/login' => "sessions#new", :as => "login"
   match '/logout' => "sessions#destroy", :as => "logout"
 
