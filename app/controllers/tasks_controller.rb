@@ -1,9 +1,10 @@
 class TasksController < ApplicationController
-  # before_filter :load_list, :except => :destroy
+  before_filter :load_list
 
   # GET /tasks
   # GET /tasks.json
   def index
+    @list = List.find(params[:list_id])
     @tasks = Task.all
 
     respond_to do |format|
@@ -84,8 +85,8 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      #format.html { redirect_to @list, :notice => 'Task deleted' }
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to @list, :notice => 'Task deleted' }
+      #format.html { redirect_to list_url }
       format.json { head :no_content }
     end
   end

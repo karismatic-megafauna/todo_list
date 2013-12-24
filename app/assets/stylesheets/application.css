@@ -48,19 +48,12 @@ a:hover {
   background-color:#FF813C;
   color:#FFFFFF;
 }
-
-.button {
-  padding: 5px;
-  border: 1px solid black;
-  width: auto;
-  margin-left: 10%;
-}
-
+ 
 .notice { color: green; }
 .alert  { color: red; }
  
 #header, #main, #footer {
-  width: 100%;
+  width: 800px;
 }
  
 #header {
@@ -104,11 +97,6 @@ a:hover {
  
 #header p {
   float: right;
-}
-
-#main {
-  clear: both;
-  height: 100%;
 }
  
 #main h1 {
@@ -178,7 +166,7 @@ a:hover {
 }
  
 #main form input[type=submit] {
-  margin-left: 10%;
+  margin-left: 175px;
   float:left;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -197,13 +185,6 @@ a:hover {
  
 #main h3:hover .actions{
   display: inline;
-}
-
-
-div.actions {
-  display: block;
-  width: 100%;
-  float: left;
 }
  
 .fieldWithErrors {
@@ -255,4 +236,3 @@ div.actions {
   font-size: 12px;
   list-style: square;
 }
-

@@ -3,6 +3,8 @@ class List < ActiveRecord::Base
   has_many :tasks
   attr_accessible :name, :description, :user_id
   # scope :user_id, lambda { where("lists.user_id = ?", current_user.id) }
+  validates :name, :presence => true
+  validates :description, :presence => true
 
   def owned_by?(owner)
     return false unless owner.is_a? User
