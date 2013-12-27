@@ -1,8 +1,7 @@
-<h1>Listing tasks</h1>
+<h1>Listing tasks for List Name: <%= @list.name %> , List id: <%= @list.id %></h1>
 
 <table>
   <tr>
-    <th>List</th>
     <th>Name</th>
     <th>Description</th>
     <th>Priority</th>
@@ -13,7 +12,6 @@
 
 <% @list.tasks.each do |task| %>
   <tr>
-    <td><%= task.list_id %></td>
     <td><%= task.name %></td>
     <td><%= task.description %></td>
     <td><%= task.priority %></td>
