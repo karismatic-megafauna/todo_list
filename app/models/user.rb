@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   has_one :userinfo
 
+  has_many :lists, :order => 'name'
+
   before_save :encrypt_new_password
   
   def self.authenticate(email, password)

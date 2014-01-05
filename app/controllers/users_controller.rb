@@ -2,7 +2,12 @@ class UsersController < ApplicationController
   before_filter :authenticate, :only => [:edit, :update]
 
   def new
-    @user = User.new
+    if current_user
+      redirect_to lists_url
+    else
+      #redirect_to '/login'
+      @user = User.new
+    end  
   end
 
   def create
@@ -11,7 +16,7 @@ class UsersController < ApplicationController
       :email => user_params[:email] 
     })
     if @user.save
-      redirect_to root_path, :notice => 'User successfully added.'
+      redirect_to login_path, :notice => 'User successfully added. Please login with newly created credientials'
     else
       render :action => 'new'
     end

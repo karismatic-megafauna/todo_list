@@ -1,4 +1,4 @@
-<%= form_for(@task) do |f| %>
+<%= form_for([@list, @task]) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :list_id %><br />
-    <%= f.number_field :list_id %>
+    <span><%= "List ID: " %></span>
+    <span><%= @list.id %></span>
   </div>
   <div class="field">
     <%= f.label :name %><br />

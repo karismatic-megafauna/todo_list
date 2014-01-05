@@ -1,12 +1,16 @@
 class ListsController < ApplicationController
+  # before_filter :authenticate
+  before_filter :authenticate
+
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
-
+    #@lists = List.find(params[:id])
+    @lists = List.where(:user_id => current_user.id)
+    
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @lists }
+      format.json { render json: @lists } 
     end
   end
 
@@ -34,13 +38,17 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
-    @list = List.find(params[:id])
+    #@list = List.find(params[:id])
+
+    #@list = List.where(user_id: current_user.id)
+    @list =  current_user.lists.find(params[:id])
   end
 
   # POST /lists
   # POST /lists.json
   def create
-    @list = List.new(params[:list])
+    # @list = List.new(params[:list])
+    @list =  current_user.lists.new(params[:list])
 
     respond_to do |format|
       if @list.save
@@ -56,7 +64,8 @@ class ListsController < ApplicationController
   # PUT /lists/1
   # PUT /lists/1.json
   def update
-    @list = List.find(params[:id])
+    #@list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
 
     respond_to do |format|
       if @list.update_attributes(params[:list])
@@ -72,7 +81,8 @@ class ListsController < ApplicationController
   # DELETE /lists/1
   # DELETE /lists/1.json
   def destroy
-    @list = List.find(params[:id])
+    #@list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
     @list.destroy
 
     respond_to do |format|
