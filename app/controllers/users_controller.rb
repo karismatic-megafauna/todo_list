@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       :email => user_params[:email] 
     })
     if @user.save
-      redirect_to root_path, :notice => 'User successfully added.'
+      redirect_to login_path, :notice => 'User successfully added. Please login with newly created credientials'
     else
       render :action => 'new'
     end

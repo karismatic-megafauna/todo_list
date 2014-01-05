@@ -1,13 +1,16 @@
 class ListsController < ApplicationController
   # before_filter :authenticate
+  before_filter :authenticate
+
   # GET /lists
   # GET /lists.json
   def index
     #@lists = List.find(params[:id])
     @lists = List.where(:user_id => current_user.id)
+    
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @lists }
+      format.json { render json: @lists } 
     end
   end
 

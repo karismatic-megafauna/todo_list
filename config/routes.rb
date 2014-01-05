@@ -1,7 +1,7 @@
 TodoList::Application.routes.draw do
   get "users/new"
 
-  root :to => 'users#new'
+  root :to => "sessions#new"
 
   resources :lists do
     resources :tasks
